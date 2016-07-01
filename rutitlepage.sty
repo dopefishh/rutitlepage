@@ -9,18 +9,24 @@
 \RequirePackage{graphicx,ifpdf,keyval}
 
 \makeatletter
+\define@key{maketitleru}{course}{\def\@rutitlecourse{#1}}
 \define@key{maketitleru}{institute}{\def\@rutitleinst{#1}}
 \define@key{maketitleru}{authorstext}{\def\@rutitleauthorstext{#1}}
+\define@key{maketitleru}{righttext}{\def\@rutitlerighttext{#1}}
+\define@key{maketitleru}{righttextheader}{\def\@rutitlerighttextheader{#1}}
 \setkeys{maketitleru}{%
+	course={},
 	institute={Radboud University Nijmegen},
-	authorstext={Authors:}
+	authorstext={Authors:},
+	righttextheader={},
+	righttext={}
 }	
-\newcommand{\maketitleru}[2][]{
+\newcommand{\maketitleru}[1][]{
 	\setkeys{maketitleru}{#1}
 	\begin{titlepage}
 		\makeatletter
 		\begin{center}
-			\textsc{\LARGE#2}\\[1.5cm]
+			\textsc{\LARGE\@rutitlecourse}\\[1.5cm]
 			\ifpdf\includegraphics[height=150pt]{logo.png}\\
 			\else\includegraphics[height=150pt]{logo.eps}\\
 			\fi
@@ -39,7 +45,8 @@
 			\end{minipage}
 			\begin{minipage}[t]{0.45\textwidth}
 					\begin{flushright}\large
-					\textit{}
+					\textit{\@rutitlerighttextheader}\\
+					\@rutitlerighttext
 				\end{flushright}
 			\end{minipage}
 			\vfill
