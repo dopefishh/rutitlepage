@@ -2,36 +2,25 @@
 % Author: Mart Lubbers
 % Date: 2016-06-28
 %
-% Usage: \usepackage{rutitle}
-%
-% Changes the titlepage to the radboud university titlepage
-% It uses Author, Date and Title from the preamble.
-% You have the following commands to change the appearance:
-% \rutitleinst{} 
-% \rutitlecourse{}
-% \rutitleauthorstext{}
-%
 % TODO
-% - Make key-value options available
 % - Internationalize (dutch logos)
 % - Nice document
 % - Make CTAN ready
-\usepackage{graphicx}
-\usepackage{ifpdf}
+\RequirePackage{graphicx,ifpdf,keyval}
 
-\def\@rutitleinst{Radboud University Nijmegen}
-\def\@rutitlecourse{Master Thesis}
-\def\@rutitleauthorstext{Authors:}
-
-\newcommand{\rutitleinst}[1]{\def\@rutitleinst{#1}}
-\newcommand{\rutitlecourse}[1]{\def\@rutitlecourse{#1}}
-\newcommand{\rutitleauthorstext}[1]{\def\@rutitleauthorstext{#1}}
-
-\renewcommand{\maketitle}{
+\makeatletter
+\define@key{maketitleru}{institute}{\def\@rutitleinst{#1}}
+\define@key{maketitleru}{authorstext}{\def\@rutitleauthorstext{#1}}
+\setkeys{maketitleru}{%
+	institute={Radboud University Nijmegen},
+	authorstext={Authors:}
+}	
+\newcommand{\maketitleru}[2][]{
+	\setkeys{maketitleru}{#1}
 	\begin{titlepage}
 		\makeatletter
 		\begin{center}
-			\textsc{\LARGE\@rutitlecourse}\\[1.5cm]
+			\textsc{\LARGE#2}\\[1.5cm]
 			\ifpdf\includegraphics[height=150pt]{logo.png}\\
 			\else\includegraphics[height=150pt]{logo.eps}\\
 			\fi
@@ -59,3 +48,4 @@
 		\makeatother
 	\end{titlepage}
 }
+\makeatother
