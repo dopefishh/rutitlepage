@@ -1,4 +1,4 @@
-all: logo.png ex.pdf ex.dvi
+all: ex.pdf ex.dvi
 
 %.dvi: %.tex
 	latex $<
