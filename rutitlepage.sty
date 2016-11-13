@@ -8,10 +8,11 @@
 % - Make CTAN ready
 \RequirePackage{graphicx,ifpdf,keyval}
 
-\makeatletter
+\def\@rutitleauthors{\@author}
 \define@key{maketitleru}{course}{\def\@rutitlecourse{#1}}
 \define@key{maketitleru}{institute}{\def\@rutitleinst{#1}}
 \define@key{maketitleru}{authorstext}{\def\@rutitleauthorstext{#1}}
+\define@key{maketitleru}{authors}{\def\@rutitleauthors{#1}}
 \define@key{maketitleru}{righttext}{\def\@rutitlerighttext{#1}}
 \define@key{maketitleru}{righttextheader}{\def\@rutitlerighttextheader{#1}}
 \setkeys{maketitleru}{%
@@ -40,7 +41,7 @@
 			\begin{minipage}[t]{0.45\textwidth}
 				\begin{flushleft}\large
 					\textit{\@rutitleauthorstext}\\
-					\@author{}
+					\@rutitleauthors{}
 				\end{flushleft}
 			\end{minipage}
 			\begin{minipage}[t]{0.45\textwidth}
@@ -55,4 +56,3 @@
 		\makeatother
 	\end{titlepage}
 }
-\makeatother
