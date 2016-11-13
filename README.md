@@ -1,4 +1,18 @@
 # RU titlepage
+## Prerequisites
+- graphicx
+- ifpdf
+- keyval
+- iflang
+
+On a sensible system running texlive one can install this by typing:
+```sh
+tlmgr install graphicx ifpdf keyval iflang
+```
+
+The titlepage works both with `latex` and `pdflatex`. Quite possibly it works
+with other \*`TeX`s.
+
 ## Usage
 To prepare the files and compile the test document run `make`.
 
