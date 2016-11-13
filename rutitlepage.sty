@@ -1,12 +1,7 @@
 % Radboud University Nijmegen titlepage
 % Author: Mart Lubbers
-% Date: 2016-06-28
-%
-% TODO
-% - Internationalize (dutch logos)
-% - Nice document
-% - Make CTAN ready
-\RequirePackage{graphicx,ifpdf,keyval}
+% Date: 2016-11-13
+\RequirePackage{graphicx,ifpdf,keyval,iflang}
 
 \def\@rutitleauthors{\@author}
 \define@key{maketitleru}{course}{\def\@rutitlecourse{#1}}
@@ -17,8 +12,8 @@
 \define@key{maketitleru}{righttextheader}{\def\@rutitlerighttextheader{#1}}
 \setkeys{maketitleru}{%
 	course={},
-	institute={Radboud University Nijmegen},
-	authorstext={Authors:},
+	institute={Radboud Universit\IfLanguageName{dutch}{eit}{y} Nijmegen},
+	authorstext={\IfLanguageName{dutch}{Auteurs: }{Authors:}},
 	righttextheader={},
 	righttext={}
 }	
@@ -47,7 +42,7 @@
 			\begin{minipage}[t]{0.45\textwidth}
 					\begin{flushright}\large
 					\textit{\@rutitlerighttextheader}\\
-					\@rutitlerighttext
+					\@rutitlerighttext%
 				\end{flushright}
 			\end{minipage}
 			\vfill
