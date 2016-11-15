@@ -6,15 +6,17 @@
 % - Internationalize (dutch logos)
 % - Nice document
 % - Make CTAN ready
-\RequirePackage{graphicx,ifpdf,keyval}
+\RequirePackage{geometry,graphicx,ifpdf,keyval}
 
 \def\@rutitleauthors{\@author}
+\def\@rutitlepagenr{\thepage}
 \define@key{maketitleru}{course}{\def\@rutitlecourse{#1}}
 \define@key{maketitleru}{institute}{\def\@rutitleinst{#1}}
 \define@key{maketitleru}{authorstext}{\def\@rutitleauthorstext{#1}}
 \define@key{maketitleru}{authors}{\def\@rutitleauthors{#1}}
 \define@key{maketitleru}{righttext}{\def\@rutitlerighttext{#1}}
 \define@key{maketitleru}{righttextheader}{\def\@rutitlerighttextheader{#1}}
+\define@key{maketitleru}{pagenr}{\def\@rutitlepagenr{#1}}
 \setkeys{maketitleru}{%
 	course={},
 	institute={Radboud University Nijmegen},
@@ -24,8 +26,9 @@
 }	
 \newcommand{\maketitleru}[1][]{
 	\setkeys{maketitleru}{#1}
+	\newgeometry{hmarginratio=1:1}
 	\begin{titlepage}
-		\makeatletter
+		\setcounter{page}{\@rutitlepagenr}
 		\begin{center}
 			\textsc{\LARGE\@rutitlecourse}\\[1.5cm]
 			\ifpdf\includegraphics[height=150pt]{logo.pdf}\\
@@ -53,6 +56,6 @@
 			\vfill
 			{\large\@date}
 		\end{center}
-		\makeatother
 	\end{titlepage}
+	\restoregeometry
 }
