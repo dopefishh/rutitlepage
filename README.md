@@ -1,5 +1,6 @@
 # RU titlepage
 ## Prerequisites
+- geometry
 - graphicx
 - ifpdf
 - keyval
@@ -7,7 +8,7 @@
 
 On a sensible system running texlive one can install this by typing:
 ```sh
-tlmgr install graphicx ifpdf keyval iflang
+tlmgr install geometry graphicx ifpdf keyval iflang
 ```
 
 The titlepage works both with `latex` and `pdflatex`. Quite possibly it works
