@@ -11,6 +11,8 @@
 \define@key{maketitleru}{authors}{\def\@rutitleauthors{#1}}
 \define@key{maketitleru}{righttext}{\def\@rutitlerighttext{#1}}
 \define@key{maketitleru}{righttextheader}{\def\@rutitlerighttextheader{#1}}
+\define@key{maketitleru}{righttextB}{\def\@rutitlerighttextb{#1}}
+\define@key{maketitleru}{righttextBheader}{\def\@rutitlerighttextbheader{#1}}
 \define@key{maketitleru}{pagenr}{\def\@rutitlepagenr{#1}}
 \setkeys{maketitleru}{%
 	course={},
@@ -48,6 +50,19 @@
 					\@rutitlerighttext%
 				\end{flushright}
 			\end{minipage}
+
+			\vspace{1cm}
+			\ifdefined\@rutitlerighttextb
+				\begin{minipage}[t]{0.45\textwidth}
+					~
+				\end{minipage}
+				\begin{minipage}[t]{0.45\textwidth}
+						\begin{flushright}\large
+						\textit{\@rutitlerighttextbheader}\\
+						\@rutitlerighttextb%
+					\end{flushright}
+				\end{minipage}
+			\fi
 			\vfill
 			{\large\@date}
 		\end{center}
