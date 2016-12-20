@@ -14,6 +14,7 @@
 \define@key{maketitleru}{righttextB}{\def\@rutitlerighttextb{#1}}
 \define@key{maketitleru}{righttextBheader}{\def\@rutitlerighttextbheader{#1}}
 \define@key{maketitleru}{pagenr}{\def\@rutitlepagenr{#1}}
+\define@key{maketitleru}{subtitle}{\def\@rutitlesubtitle{#1}}
 \setkeys{maketitleru}{%
 	course={},
 	institute={Radboud Universit\IfLanguageName{dutch}{eit}{y} Nijmegen},
@@ -37,7 +38,12 @@
 			\vspace{0.4cm}
 			\textbf{\large\@title}\\[0.4cm]
 			\hrule
-			\vspace{2cm}
+			\ifdefined\@rutitlesubtitle
+				\vspace{0.4cm}
+				\textit{\@rutitlesubtitle}\\[1cm]
+			\else
+				\vspace{2cm}			
+			\fi
 			\begin{minipage}[t]{0.45\textwidth}
 				\begin{flushleft}\large
 					\textit{\@rutitleauthorstext}\\
