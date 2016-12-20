@@ -34,3 +34,4 @@ Contributors:
 
 - [camilstaps](https://github.com/camilstaps)
 - [dsprenkels](https://github.com/dsprenkels)
+- [chriskamphuis](https://github.com/chriskamphuis)
