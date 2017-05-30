@@ -4,4 +4,5 @@
 *.png
 *.dvi
 *.pdf
+*.sty
 !logo.pdf
