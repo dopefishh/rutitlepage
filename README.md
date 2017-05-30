@@ -5,6 +5,9 @@
 - ifpdf
 - keyval
 - iflang
+- babel-dutch (optional)
+- verbatim (documentation only)
+- booktabs (documentation only
 
 On a sensible system running texlive one can install this by typing:
 ```sh
@@ -12,18 +15,17 @@ tlmgr install geometry graphicx ifpdf keyval iflang
 ```
 
 The titlepage works both with `latex` and `pdflatex`. Quite possibly it works
-with other \*`TeX`s.
+with other \*`tex`s.
 
 ## Usage
-To prepare the files and compile the test document run `make`.
+To prepare the files and compile the documentation run `make`.
 
-For all available options see `ex.tex`.
-
-When you use `babel` to internationalize your document the titlepage will
-change accordingly.
+When you use `babel` to internationalize your document in either English or
+Dutch the titlepage will change accordingly.
 
 ## Todo
-- Make the package CTAN ready
+- Upload to CTAN
+- Fix the right bottom header text
 
 ## Author(s)
 Author:

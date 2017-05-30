@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
-% subfiles - class and package for multi-file projects in LaTeX
-% Copyright 2002, 2012 Federico Garcia (feg8@pitt.edu, fedegarcia@hotmail.com)
+% rutitlepage - A Radboud University titlepage
+% Copyright 2017 Mart Lubbers (mart@martlubbers.net)
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -11,64 +11,132 @@
 % and version 1.3 or later is part of all distributions of LaTeX
 % version 2005/12/01 or later.
 %
-% This work has the LPPL maintenance status `maintained'.
-% 
-% The Current Maintainer of this work is Federico Garcia.
-%
-% This work consists of the files subfiles.dtx and subfiles.ins
-% and the derived files subfiles.sty and subfiles.pdf
-%
-% -------------------------------------------
-%
 %<*driver>
 % \fi
 \ProvidesFile{rutitlepage.dtx}[2017/05/30 v1.0 Initial package]
 % \iffalse
 \documentclass{ltxdoc}
+\usepackage{rutitlepage}
+\usepackage{verbatim}
+\usepackage{booktabs}
+\usepackage{url}
 \GetFileInfo{rutitlepage.dtx}
+
+\urlstyle{tt}
 \title{A Radboud University titlepage}
 \date{\filedate{}}
- \author{Mart Lubbers}
+\author{Mart Lubbers}
 
 \begin{document}
 \maketitle
  \DocInput{\filename}
  \PrintChanges
- \PrintIndex
 \end{document}
 %</driver>
 % \fi
 %
 % \changes{v1.0}{2017/05/30}{Initial package}
 %
-% \begin{abstract}
-% \end{abstract}
 % \section{Introduction}
-% 
-% 
+% \texttt{rutitlepage} is an unofficial \LaTeX{} package to generate titlepages
+% for the Radboud University. It uses official vector logos from the
+% university. The package depends on: \texttt{geometry}, \texttt{graphicx},
+% \texttt{ifpdf}, \texttt{keyval} and \texttt{iflang}. \texttt{babel-dutch}
+% (optional).
+%
+% \subsection{Contributors}
+% \texttt{rutitlepage} is maintained by Mart Lubbers but work has been done by
+% (in order of date of contribution):
+% \begin{itemize}
+% 	\item Camil Staps\footnote{\url{https://github.com/camilstaps}}
+% 	\item Daan Sprenkels\footnote{\url{https://github.com/dsprenkels}}
+% 	\item Chris Kamphuis\footnote{\url{https://github.com/chriskamphuis}}
+% \end{itemize}
+%
+% \subsection{Issues}
+% \begin{itemize}
+% 	\item \texttt{righttextB} and \texttt{righttextBheader} are broken.
+% \end{itemize}
+%
 % \section{Usage}
+% \DescribeMacro\maketitleru
+% This macro creates the actual titlepage and has the following options
+% available. Note that all options are optional.
+%
+% \begin{tabular}{lp{.5\linewidth}l} 
+% 	\toprule
+%	Option & Description & Default\\
+% 	\midrule
+% 	\texttt{authorstext} & The left column header.
+% 		& \texttt{Author:}\\
+% 	\texttt{authors} & The left column.
+%		& \texttt{\textbackslash{}author}\\
+% 	\texttt{course} & The top middle text.\\
+% 	\texttt{date} & The date. 
+%		& \texttt{\textbackslash{}date}\\
+% 	\texttt{institute} & The text under the logo.
+%		& Radboud University Nijmegen\\
+% 	\texttt{pagenr} & The page number of the page, this might be required to
+%		set to e.g.\ $1$ for some document classes.\\
+% 	\texttt{righttextheader} & The right column.\\
+% 	\texttt{righttext} & The right column header.\\
+% 	\texttt{righttextBheader} & The right bottom column header.\\
+% 	\texttt{righttextB} & The right bottom column.\\
+% 	\texttt{subtitle} & The text under the title.\\
+% 	\texttt{title} & The text between the lines. 
+%		& \texttt{\textbackslash{}title}\\
+% 	\bottomrule
+% \end{tabular}
+%
+% \section{Example}
+% The following fully equipped code generates the next page:
 % 
-% \subsection{Setting up}
-% 
-%\section{The Implementation}
-%\subsection{The class}
-%    \begin{macrocode}
-%<*package>
+% \begin{tabular}{rl}
+% 	\texttt{\textbackslash{}maketitleru[}
+%		& \texttt{authors=\{John Doe\},}\\
+%		& \texttt{authorstext=\{Author:\},}\\
+%		& \texttt{course=\{Master Thesis\},}\\
+%		& \texttt{date=\{Tomorrow\},}\\
+%		& \texttt{institute=\{Radboud University Nijmegen\},}\\
+%		& \texttt{righttext=\{Jane Doe\},}\\
+%		& \texttt{righttextB=\{Joanne Dune\},}\\
+%		& \texttt{righttextBheader=\{Second reader:\},}\\
+%		& \texttt{righttextheader=\{Supervisors:\},}\\
+%		& \texttt{subtitle=\{A cool subtitle for your report\},}\\
+%		& \texttt{title=\{Some interesting title\}]}\\
+% \end{tabular}
+%\maketitleru[
+%	title={Some interesting title},
+%	date={Tomorrow},
+%	course={Master Thesis},
+%	institute={Radboud University Nijmegen},
+%	authorstext={Author:},
+%	authors={John Doe},
+%	righttextheader={Supervisors:},
+%	righttext={Jane Doe},
+%	righttextBheader={Second reader:},
+%	righttextB={Joanne Dune},
+%	subtitle={A cool subtitle for your report}]
+%\endinput
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{rutitlepage}[2017/05/30 Mart Lubbers]
 \RequirePackage{geometry,graphicx,ifpdf,keyval,iflang}
+\def\@rutitletitle{\@title}
+\def\@rutitledate{\@date}
 \def\@rutitleauthors{\@author}
 \def\@rutitlepagenr{\thepage}
-\define@key{maketitleru}{course}{\def\@rutitlecourse{#1}}
-\define@key{maketitleru}{institute}{\def\@rutitleinst{#1}}
 \define@key{maketitleru}{authorstext}{\def\@rutitleauthorstext{#1}}
 \define@key{maketitleru}{authors}{\def\@rutitleauthors{#1}}
-\define@key{maketitleru}{righttext}{\def\@rutitlerighttext{#1}}
-\define@key{maketitleru}{righttextheader}{\def\@rutitlerighttextheader{#1}}
-\define@key{maketitleru}{righttextB}{\def\@rutitlerighttextb{#1}}
-\define@key{maketitleru}{righttextBheader}{\def\@rutitlerighttextbheader{#1}}
+\define@key{maketitleru}{course}{\def\@rutitlecourse{#1}}
+\define@key{maketitleru}{date}{\def\@rutitledate{#1}}
+\define@key{maketitleru}{institute}{\def\@rutitleinst{#1}}
 \define@key{maketitleru}{pagenr}{\def\@rutitlepagenr{#1}}
+\define@key{maketitleru}{righttextBheader}{\def\@rutitlerighttextbheader{#1}}
+\define@key{maketitleru}{righttextB}{\def\@rutitlerighttextb{#1}}
+\define@key{maketitleru}{righttextheader}{\def\@rutitlerighttextheader{#1}}
+\define@key{maketitleru}{righttext}{\def\@rutitlerighttext{#1}}
 \define@key{maketitleru}{subtitle}{\def\@rutitlesubtitle{#1}}
+\define@key{maketitleru}{title}{\def\@rutitletitle{#1}}
 \setkeys{maketitleru}{%
 	course={},
 	institute={Radboud Universit\IfLanguageName{dutch}{eit}{y} Nijmegen},
@@ -90,7 +158,7 @@
 			\textsc{\Large\@rutitleinst}\\[1cm]
 			\hrule
 			\vspace{0.4cm}
-			\textbf{\large\@title}\\[0.4cm]
+			\textbf{\large\@rutitletitle}\\[0.4cm]
 			\hrule
 			\ifdefined\@rutitlesubtitle
 				\vspace{0.4cm}
@@ -104,6 +172,7 @@
 					\@rutitleauthors{}
 				\end{flushleft}
 			\end{minipage}
+			~
 			\begin{minipage}[t]{0.45\textwidth}
 				\begin{flushright}\large
 					\textit{\@rutitlerighttextheader}\\
@@ -113,7 +182,6 @@
 			\vspace{1cm}
 			\ifdefined\@rutitlerighttextb
 				\begin{minipage}[t]{0.45\textwidth}
-					~
 				\end{minipage}
 				\begin{minipage}[t]{0.45\textwidth}
 					\begin{flushright}\large
@@ -123,10 +191,8 @@
 				\end{minipage}
 			\fi
 			\vfill
-			{\large\@date}
+			{\large\@rutitledate}
 		\end{center}
 	\end{titlepage}
-	\restoregeometry%
+	\restoregeometry{}
 }
-%</package>
-%    \end{macrocode}
