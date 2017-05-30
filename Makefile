@@ -1,14 +1,12 @@
-SHELL:=/bin/bash
 LATEX?=pdflatex
 TEX?=tex
-MAKEINDEX?=makeindex
 
 all: rutitlepage.sty rutitlepage.pdf
 
 release: rutitlepage.tlpobj all
-	mkdir -vp tlpkg/tlpobj {tex,doc,source}/latex/rutitlepage
+	mkdir -vp tlpkg/tlpobj $(addsuffix /latex/rutitlepage,tex doc source)
 	cp rutitlepage.sty logo.eps logo.pdf tex/latex/rutitlepage
-	cp rutitlepage.{dtx,ins} source/latex/rutitlepage
+	cp $(addprefix rutitlepage.,dtx ins) source/latex/rutitlepage
 	cp README.md rutitlepage.pdf doc/latex/rutitlepage
 	cp $< tlpkg/tlpobj
 	tar -cJvf rutitlepage.tar.xz tex source doc tlpkg
@@ -19,7 +17,6 @@ rutitlepage.sty: rutitlepage.ins rutitlepage.dtx
 
 rutitlepage.pdf: rutitlepage.dtx rutitlepage.sty
 	$(LATEX) $<
-	$(MAKEINDEX) -s gind.ist $(basename $<) || true
 	$(LATEX) $<
 
 clean:
