@@ -26,6 +26,7 @@ Dutch the titlepage will change accordingly.
 ## Todo
 - Upload to CTAN
 - Fix the right bottom header text
+- Make the image loading more canonical
 
 ## Author(s)
 Author:
