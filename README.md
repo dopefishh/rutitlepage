@@ -9,11 +9,6 @@
 - verbatim (documentation only)
 - booktabs (documentation only
 
-On a sensible system running texlive one can install this by typing:
-```sh
-tlmgr install geometry graphicx ifpdf keyval iflang
-```
-
 The titlepage works both with `latex` and `pdflatex`. Quite possibly it works
 with other \*`tex`s.
 
@@ -24,11 +19,10 @@ Dutch the titlepage will change accordingly.
 To prepare the files and compile the documentation run `make`.
 
 To install using `tlmgr` run `make release` followed by `tlmgr install --file
-rutitlepage.tar.xz`
+rutitlepage.tar.xz`. This will install the needed dependencies.
 
 ## Todo
 - Upload to CTAN
-- Make the image loading more canonical
 
 ## Author(s)
 Author:
