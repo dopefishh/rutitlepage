@@ -17,15 +17,17 @@ tlmgr install geometry graphicx ifpdf keyval iflang
 The titlepage works both with `latex` and `pdflatex`. Quite possibly it works
 with other \*`tex`s.
 
-## Usage
-To prepare the files and compile the documentation run `make`.
-
 When you use `babel` to internationalize your document in either English or
 Dutch the titlepage will change accordingly.
 
+## Usage
+To prepare the files and compile the documentation run `make`.
+
+To install using `tlmgr` run `make release` followed by `tlmgr install --file
+rutitlepage.tar.xz`
+
 ## Todo
 - Upload to CTAN
-- Fix the right bottom header text
 - Make the image loading more canonical
 
 ## Author(s)

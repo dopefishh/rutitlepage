@@ -1,0 +1,20 @@
+name rutitlepage
+category Package
+revision 1
+shortdesc A Radboud University Titlepage
+relocated 1
+depend geometry
+depend graphicx
+depend ifpdf
+depend keyval
+depend iflang
+docfiles size=146
+ RELOC/doc/latex/rutitlepage/README details="Readme"
+ RELOC/doc/latex/rutitlepage/rutitlepage.pdf details="Package documentation (English)" language="en"
+srcfiles size=8
+ RELOC/source/latex/rutitlepage/rutitlepage.dtx
+ RELOC/source/latex/rutitlepage/rutitlepage.ins
+runfiles size=25
+ RELOC/tex/latex/rutitlepage/rutitlepage.sty
+ RELOC/tex/latex/rutitlepage/logo.eps
+ RELOC/tex/latex/rutitlepage/logo.pdf

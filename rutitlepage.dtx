@@ -59,7 +59,6 @@
 %
 % \subsection{Issues}
 % \begin{itemize}
-% 	\item \texttt{righttextB} and \texttt{righttextBheader} are broken.
 % 	\item Make the image loading more canonical.
 % \end{itemize}
 %
@@ -177,16 +176,17 @@
 					\@rutitleauthors{}
 				\end{flushleft}
 			\end{minipage}
-			~
 			\begin{minipage}[t]{0.45\textwidth}
 				\begin{flushright}\large
 					\textit{\@rutitlerighttextheader}\\
 					\@rutitlerighttext%
 				\end{flushright}
 			\end{minipage}
+
 			\vspace{1cm}
 			\ifdefined\@rutitlerighttextb
 				\begin{minipage}[t]{0.45\textwidth}
+					~
 				\end{minipage}
 				\begin{minipage}[t]{0.45\textwidth}
 					\begin{flushright}\large
