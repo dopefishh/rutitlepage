@@ -1,13 +1,12 @@
-all: ex.pdf ex.dvi
+LATEX?=pdflatex
+TEX?=tex
+all: rutitlepage.sty rutitlepage.pdf
 
-%.dvi: %.tex
-	latex $<
+rutitlepage.sty: rutitlepage.ins rutitlepage.dtx
+	$(TEX) $<
 
-%.pdf: %.tex
-	pdflatex $<
-
-%.png: %.eps
-	convert -density 300 $< -resize x1000 $@
+rutitlepage.pdf: rutitlepage.dtx rutitlepage.sty
+	$(LATEX) $<
 
 clean:
-	$(RM) logo.png $(addprefix ex.,log aux pdf dvi)
+	$(RM) $(addprefix rutitlepage.,sty aux log idx glo pdf)
