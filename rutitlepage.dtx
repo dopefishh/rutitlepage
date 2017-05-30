@@ -1,0 +1,153 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2017 Mart Lubbers
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3 of this license or (at your option) any later
+% version.  The latest version of this license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of
+% LaTeX version 2005/12/01 or later.
+%
+% <*driver>
+% \fi
+\ProvidesFile{rutitlepage.dtx}[2017/05/29 v1.0]
+% \iffalse
+
+\documentclass[a4paper]{ltxdoc}
+\usepackage{rutitlepage}
+\GetFileInfo{rutitlepage.dtx}
+\EnableCrossrefs%
+\CodelineIndex%
+\RecordChanges%
+
+\title{\texttt{rutitlepage}. A titlepage for the Radboud University. \thanks{This file has version number \fileversion{} last revised \filedate}}
+\author{Mart Lubbers\\\texttt{mart@martlubbers.net}}
+\date{\filedate}
+\begin{document}
+	\maketitle
+	\DocInput{\filename}
+	\PrintChanges{}
+	\PrintIndex{}
+\end{document}
+%</driver>
+% \fi
+%
+% \changes{v1.0}{2017/05/29}{Initial packaged version}
+%
+% \begin{abstract}
+% Lorem
+% \end{abstract}
+%
+% \section{Introduction}
+% \texttt{rutitlepage} is an unofficial \LaTeX{} package to generate titlepages
+% for the Radboud University. It uses official vector logos from the
+% university. The package depends on:
+% \begin{itemize}
+% 	\item\texttt{geometry}
+% 	\item\texttt{graphicx}
+% 	\item\texttt{ifpdf}
+% 	\item\texttt{keyval}
+% 	\item\texttt{iflang}
+% \end{itemize}
+%
+% Optionally, if a supported \texttt{babel}-language\footnote{\texttt{dutch}
+% and \texttt{english} is used the titlepage will be internationalized
+% accordingly.}
+%
+% \section{Usage}
+% \DescribeMacro\maketitleru
+% Creates the actual titlepage. Available options:
+% \begin{tabular}{ll} 
+% 	\texttt{course} & \\
+% 	\texttt{institute} & \\
+% 	\texttt{authorstext} & \\
+% 	\texttt{authors} & \\
+% 	\texttt{righttext} & \\
+% 	\texttt{righttextheader} & \\
+% 	\texttt{righttextB} & \\
+% 	\texttt{righttextBheader} & \\
+% 	\texttt{pagenr} & \\
+% 	\texttt{subtitle} & \\
+% \end{tabular}
+% \StopEventually
+
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rutitlepage}[\filedate\space version\fileversion]
+\RequirePackage{geometry,graphicx,ifpdf,keyval,iflang}
+\def\@rutitleauthors{\@author}
+\def\@rutitlepagenr{\thepage}
+\define@key{maketitleru}{course}{\def\@rutitlecourse{#1}}
+\define@key{maketitleru}{institute}{\def\@rutitleinst{#1}}
+\define@key{maketitleru}{authorstext}{\def\@rutitleauthorstext{#1}}
+\define@key{maketitleru}{authors}{\def\@rutitleauthors{#1}}
+\define@key{maketitleru}{righttext}{\def\@rutitlerighttext{#1}}
+\define@key{maketitleru}{righttextheader}{\def\@rutitlerighttextheader{#1}}
+\define@key{maketitleru}{righttextB}{\def\@rutitlerighttextb{#1}}
+\define@key{maketitleru}{righttextBheader}{\def\@rutitlerighttextbheader{#1}}
+\define@key{maketitleru}{pagenr}{\def\@rutitlepagenr{#1}}
+\define@key{maketitleru}{subtitle}{\def\@rutitlesubtitle{#1}}
+\setkeys{maketitleru}{%
+	course={},
+	institute={Radboud Universit\IfLanguageName{dutch}{eit}{y} Nijmegen},
+	authorstext={\IfLanguageName{dutch}{Auteurs: }{Authors:}},
+	righttextheader={},
+	righttext={}
+}	
+\newcommand{\maketitleru}[1][]{
+	\setkeys{maketitleru}{#1}
+	\newgeometry{hmarginratio=1:1}
+	\begin{titlepage}
+		\setcounter{page}{\@rutitlepagenr}
+		\begin{center}
+			\textsc{\LARGE\@rutitlecourse}\\[1.5cm]
+			\ifpdf\includegraphics[height=150pt]{logo.pdf}\\
+			\else\includegraphics[height=150pt]{logo.eps}\\
+			\fi
+			\vspace{0.4cm}
+			\textsc{\Large\@rutitleinst}\\[1cm]
+			\hrule
+			\vspace{0.4cm}
+			\textbf{\large\@title}\\[0.4cm]
+			\hrule
+			\ifdefined\@rutitlesubtitle
+				\vspace{0.4cm}
+				\textit{\@rutitlesubtitle}\\[1cm]
+			\else
+				\vspace{2cm}			
+			\fi
+			\begin{minipage}[t]{0.45\textwidth}
+				\begin{flushleft}\large
+					\textit{\@rutitleauthorstext}\\
+					\@rutitleauthors{}
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}[t]{0.45\textwidth}
+				\begin{flushright}\large
+					\textit{\@rutitlerighttextheader}\\
+					\@rutitlerighttext%
+				\end{flushright}
+			\end{minipage}
+			\vspace{1cm}
+			\ifdefined\@rutitlerighttextb
+				\begin{minipage}[t]{0.45\textwidth}
+					~
+				\end{minipage}
+				\begin{minipage}[t]{0.45\textwidth}
+					\begin{flushright}\large
+						\textit{\@rutitlerighttextbheader}\\
+						\@rutitlerighttextb%
+					\end{flushright}
+				\end{minipage}
+			\fi
+			\vfill
+			{\large\@date}
+		\end{center}
+	\end{titlepage}
+	\restoregeometry{}
+}
+%</package>
