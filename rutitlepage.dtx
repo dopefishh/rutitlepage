@@ -67,7 +67,7 @@
 % This macro creates the actual titlepage and has the following options
 % available. Note that all options are optional.
 %
-% \begin{tabular}{lp{.5\linewidth}l} 
+% \begin{tabular}{lp{.3\linewidth}l}
 % 	\toprule
 %	Option & Description & Default\\
 % 	\midrule
@@ -95,31 +95,31 @@
 % \section{Example}
 % The following fully equipped code generates the next page:
 % 
-% \begin{tabular}{rl}
+% \begin{tabular}{r@{}l}
 % 	\texttt{\textbackslash{}maketitleru[}
 %		& \texttt{authors=\{John Doe\},}\\
 %		& \texttt{authorstext=\{Author:\},}\\
 %		& \texttt{course=\{Master Thesis\},}\\
 %		& \texttt{date=\{Tomorrow\},}\\
 %		& \texttt{institute=\{Radboud University Nijmegen\},}\\
-%		& \texttt{righttext=\{Jane Doe\},}\\
-%		& \texttt{righttextB=\{Joanne Dune\},}\\
-%		& \texttt{righttextBheader=\{Second reader:\},}\\
 %		& \texttt{righttextheader=\{Supervisors:\},}\\
-%		& \texttt{subtitle=\{A cool subtitle for your report\},}\\
-%		& \texttt{title=\{Some interesting title\}]}\\
+%		& \texttt{righttext=\{Jane Doe\},}\\
+%		& \texttt{righttextBheader=\{Second reader:\},}\\
+%		& \texttt{righttextB=\{Joanne Dune\},}\\
+%		& \texttt{title=\{Some interesting title\},}\\
+%		& \texttt{subtitle=\{A cool subtitle for your report\}]}\\
 % \end{tabular}
 %\maketitleru[
-%	title={Some interesting title},
-%	date={Tomorrow},
-%	course={Master Thesis},
-%	institute={Radboud University Nijmegen},
-%	authorstext={Author:},
 %	authors={John Doe},
+%	authorstext={Author:},
+%	course={Master Thesis},
+%	date={Tomorrow},
+%	institute={Radboud University Nijmegen},
 %	righttextheader={Supervisors:},
 %	righttext={Jane Doe},
 %	righttextBheader={Second reader:},
 %	righttextB={Joanne Dune},
+%	title={Some interesting title},
 %	subtitle={A cool subtitle for your report}]
 %\endinput
 \NeedsTeXFormat{LaTeX2e}
