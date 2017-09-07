@@ -6,14 +6,13 @@
 - keyval
 - iflang
 - babel-dutch (optional)
-- verbatim (documentation only)
 - booktabs (documentation only
 
 The titlepage works both with `latex` and `pdflatex`. Quite possibly it works
 with other \*`tex`s.
 
 When you use `babel` to internationalize your document in either English or
-Dutch the titlepage will change accordingly.
+Dutch the titlepage logo will change accordingly.
 
 ## Usage
 To prepare the files and compile the documentation run `make`.
