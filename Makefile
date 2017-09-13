@@ -5,7 +5,7 @@ all: rutitlepage.sty rutitlepage.pdf
 
 release: rutitlepage.tlpobj all
 	mkdir -vp tlpkg/tlpobj $(addsuffix /latex/rutitlepage,tex doc source)
-	cp rutitlepage.sty logo.eps logo.pdf tex/latex/rutitlepage
+	cp rutitlepage.sty logo-*.eps logo-*.pdf tex/latex/rutitlepage
 	cp $(addprefix rutitlepage.,dtx ins) source/latex/rutitlepage
 	cp README.md rutitlepage.pdf doc/latex/rutitlepage
 	cp $< tlpkg/tlpobj
