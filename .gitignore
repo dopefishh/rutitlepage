@@ -6,6 +6,7 @@
 *.pdf
 *.sty
 *.tar.xz
+*.tar.gz
 tex
 source
 doc

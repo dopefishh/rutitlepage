@@ -6,10 +6,11 @@
 - keyval
 - iflang
 - babel-dutch (optional)
-- booktabs (documentation only
+- booktabs (documentation only)
+- ctanify (ctan package building only)
 
 The titlepage works both with `latex` and `pdflatex`. Quite possibly it works
-with other \*`tex`s.
+with other \*`tex`'s.
 
 When you use `babel` to internationalize your document in either English or
 Dutch the titlepage logo will change accordingly.
@@ -19,9 +20,6 @@ To prepare the files and compile the documentation run `make`.
 
 To install using `tlmgr` run `make release` followed by `tlmgr install --file
 rutitlepage.tar.xz`. This will install the needed dependencies.
-
-## Todo
-- Upload to CTAN
 
 ## Author(s)
 Author:
@@ -33,3 +31,7 @@ Contributors:
 - [camilstaps](https://github.com/camilstaps)
 - [dsprenkels](https://github.com/dsprenkels)
 - [chriskamphuis](https://github.com/chriskamphuis)
+
+## Version
+
+Version 2.0

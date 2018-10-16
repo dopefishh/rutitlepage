@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
 % rutitlepage - A Radboud University titlepage
-% Copyright 2017 Mart Lubbers (mart@martlubbers.net)
+% Copyright 2017-2018 Mart Lubbers (mart@martlubbers.net)
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -13,7 +13,7 @@
 %
 %<*driver>
 % \fi
-\ProvidesFile{rutitlepage.dtx}[2017/09/07 v1.0 Initial package]
+\ProvidesFile{rutitlepage.dtx}[2018/10/16 v2.0 Initial package]
 % \iffalse
 \documentclass{ltxdoc}
 \usepackage{rutitlepage}
@@ -29,11 +29,12 @@
 
 \begin{document}
  \DocInput{\filename}
- \PrintChanges
+ \PrintChanges{}
 \end{document}
 %</driver>
 % \fi
 %
+% \changes{v2.0}{2018/10/16}{New layout following the guidelines}
 % \changes{v1.0}{2017/05/30}{Initial package}
 % \maketitle
 %
@@ -88,7 +89,7 @@
 % \texttt{layout}
 % 	& The layout: \texttt{traditional} or \texttt{seventeen}.
 % 		See the examples below.
-% 	& \texttt{t}, \texttt{17} & \texttt{traditional}\\
+% 	& \texttt{t}, \texttt{17} & \texttt{seventeen}\\
 % \texttt{nextpagenr}
 % 	& The page number of the next page.
 % 	& \texttt{t}, \texttt{17} & \texttt{\textbackslash{}thepage+1}\\
@@ -158,7 +159,7 @@
 \def\@rutitledate{\@date}
 \def\@rutitleinst{Radboud Universit\IfLanguageName{dutch}{eit}{y} Nijmegen}
 \def\@rutitletitle{\@title}
-\def\@rutitlelayout{traditional}
+\def\@rutitlelayout{seventeen}
 \newif\if@rutitlecolour\@rutitlecolourfalse
 \define@key{maketitleru}{authors}{\def\@rutitleauthors{#1}}
 \define@key{maketitleru}{authorstext}{\def\@rutitleauthorstext{#1}}
@@ -250,7 +251,7 @@
 	\else
 		\PackageError{rutitlepage}
 			{Unknown layout `\@rutitlelayout'.}
-			{The `layout' key of \maketitleru\space contained an unknown layout.\MessageBreak
+			{The `layout' key of \maketitleru\space contained an unknown layout.\MessageBreak{}
 			 Check the package documentation for the possible layouts.}
 	\fi
 	\ifdefined\@rutitlenextpagenr\setcounter{page}{\@rutitlenextpagenr}\fi%

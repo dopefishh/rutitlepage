@@ -12,6 +12,9 @@ release: rutitlepage.tlpobj all
 	tar -cJvf rutitlepage.tar.xz tex source doc tlpkg
 	rm -r tex source doc tlpkg
 
+ctan: rutitlepage.ins rutitlepage.dtx rutitlepage.pdf README.md
+	ctanify --no-skip $^ $(addsuffix =source/latex/rutitlepage,$(wildcard logo*))
+
 rutitlepage.sty: rutitlepage.ins rutitlepage.dtx
 	$(TEX) $<
 
@@ -20,4 +23,4 @@ rutitlepage.pdf: rutitlepage.dtx rutitlepage.sty
 	$(LATEX) $<
 
 clean:
-	$(RM) $(addprefix rutitlepage.,sty aux log idx glo pdf ind ilg tar.xz)
+	$(RM) $(addprefix rutitlepage.,sty aux log idx glo pdf ind ilg tar.xz tar.gz)
