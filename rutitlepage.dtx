@@ -13,7 +13,7 @@
 %
 %<*driver>
 % \fi
-\ProvidesFile{rutitlepage.dtx}[2018/10/16 v2.0 Initial package]
+\ProvidesFile{rutitlepage.dtx}[2018/11/10 v2.1 Initial package]
 % \iffalse
 \documentclass{ltxdoc}
 \usepackage{rutitlepage}
@@ -34,6 +34,7 @@
 %</driver>
 % \fi
 %
+% \changes{v2.1}{2018/11/10}{Fix bug for default layout in manual, rename images}
 % \changes{v2.0}{2018/10/16}{New layout following the guidelines}
 % \changes{v1.0}{2017/05/30}{Initial package}
 % \maketitle
@@ -140,6 +141,7 @@
 % 	date={Tomorrow},
 % 	others={{Supervisor:}{Jane Doe},{Second reader:}{Joanne Dune}},
 % 	course={Master's Thesis},
+% 	layout=traditional,
 % 	title={The `traditional' layout},
 % 	subtitle={Simple elegance}]
 %
@@ -195,8 +197,8 @@
 		\vfill
 
 		\hfill
-		\ifpdf\includegraphics[width=80mm]{logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.pdf}\\
-		\else\includegraphics[width=80mm]{logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.eps}\\
+		\ifpdf\includegraphics[width=80mm]{rutitlepage-logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.pdf}\\
+		\else\includegraphics[width=80mm]{rutitlepage-logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.eps}\\
 		\fi
 	\end{titlepage}
 	\restoregeometry%
@@ -206,8 +208,8 @@
 	\begin{titlepage}
 		\begin{center}
 			\ifdefined\@rutitlecourse\textsc{\LARGE\@rutitlecourse}\\[1.5cm]\fi
-			\ifpdf\includegraphics[height=150pt]{logo.pdf}\\
-			\else\includegraphics[height=150pt]{logo.eps}\\
+			\ifpdf\includegraphics[height=150pt]{rutitlepage-logo.pdf}\\
+			\else\includegraphics[height=150pt]{rutitlepage-logo.eps}\\
 			\fi
 			\vspace{0.4cm}
 			\textsc{\Large\@rutitleinst}\\[1cm]

@@ -7,7 +7,7 @@
 - iflang
 - babel-dutch (optional)
 - booktabs (documentation only)
-- ctanify (ctan package building only)
+- ctanify (ctan package building only (requires at least zip and libfile-copy-recursive-perl))
 
 The titlepage works both with `latex` and `pdflatex`. Quite possibly it works
 with other \*`tex`'s.
