@@ -13,7 +13,7 @@
 %
 %<*driver>
 % \fi
-\ProvidesFile{rutitlepage.dtx}[2019/05/08 v2.2 Initial package]
+\ProvidesFile{rutitlepage.dtx}[2019/05/08 v2.2 Radboud University Titlepage]
 % \iffalse
 \documentclass{ltxdoc}
 \usepackage{rutitlepage}
@@ -189,7 +189,7 @@
 		\null\vfill%
 		\parindent0pt
 		{\Huge\bfseries\@rutitletitle}%
-		\ifdefined\@rutitlesubtitle{\\[2\baselineskip]\large\it\@rutitlesubtitle}\fi\\[4\baselineskip]
+		\ifdefined\@rutitlesubtitle{\\[2\baselineskip]\large\it\@rutitlesubtitle\/}\fi\\[4\baselineskip]
 		{\Large\sc\@rutitleauthors}\\[\baselineskip]
 		{\large\@rutitledate}
 		\vfill
@@ -249,7 +249,8 @@
 }
 \newcommand{\maketitleru}[1][]{
 	\setkeys{maketitleru}{#1}
-	\ifcsname rutitle@layout@\@rutitlelayout\endcsname
+	\ifcsname%
+		rutitle@layout@\@rutitlelayout\endcsname
 		\expandafter\csname rutitle@layout@\@rutitlelayout\endcsname
 	\else
 		\PackageError{rutitlepage}
