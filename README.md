@@ -34,4 +34,4 @@ Contributors:
 
 ## Version
 
-Version 2.2
+Version 2.3
