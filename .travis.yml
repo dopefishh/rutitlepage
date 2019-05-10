@@ -2,6 +2,6 @@ language: minimal
 sudo: required
 before_install:
     - sudo apt-get -qq update
-    - sudo apt-get -y install xz-utils build-essential texlive-full --no-install-recommends
+    - sudo apt-get -y install build-essential texlive --no-install-recommends
 script:
     - make release ctan
