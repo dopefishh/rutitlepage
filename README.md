@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dopefishh/rutitlepage.svg?branch=master)](https://travis-ci.org/dopefishh/rutitlepage)
+
 # RU titlepage
 ## Prerequisites
 - geometry
