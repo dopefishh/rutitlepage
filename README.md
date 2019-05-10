@@ -17,11 +17,16 @@ with other \*`tex`'s.
 When you use `babel` to internationalize your document in either English or
 Dutch the titlepage logo will change accordingly.
 
-## Usage
-To prepare the files and compile the documentation run `make`.
+## Installation
+#### ctan (preferred)
+Run `tlmgr install rutitlepage`
 
-To install using `tlmgr` run `make release` followed by `tlmgr install --file
-rutitlepage.tar.xz`. This will install the needed dependencies.
+#### tlmgr
+Run `make release` and run `tlmgr install --file rutitlepage.tar.xz`
+
+#### Manual
+Run `make release` and extract the contents of `rutitlepage.tar.xz` in your texmf
+tree or local project.
 
 ## Author(s)
 Author:
