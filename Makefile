@@ -23,4 +23,4 @@ rutitlepage.pdf: rutitlepage.dtx rutitlepage.sty
 	$(LATEX) $<
 
 clean:
-	$(RM) $(addprefix rutitlepage.,sty aux log idx glo pdf ind ilg tar.xz tar.gz)
+	$(RM) $(addprefix rutitlepage.,sty aux log idx glo pdf ind ilg tar.xz tar.gz fls synctex.gz fdb_latexmk)

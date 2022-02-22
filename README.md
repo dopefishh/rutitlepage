@@ -33,7 +33,7 @@ Author:
 
 - Mart Lubbers
 
-Contributors:
+Other contributors:
 
 - [camilstaps](https://github.com/camilstaps)
 - [dsprenkels](https://github.com/dsprenkels)
@@ -41,4 +41,4 @@ Contributors:
 
 ## Version
 
-Version 2.3
+Version 3.0
