@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
 % rutitlepage - A Radboud University titlepage
-% Copyright 2017-2019 Mart Lubbers (mart@cs.ru.nl)
+% Copyright 2017-2022 Mart Lubbers (mart@cs.ru.nl)
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -13,7 +13,7 @@
 %
 %<*driver>
 % \fi
-\ProvidesFile{rutitlepage.dtx}[2019/05/09 v2.3 Radboud University Titlepage]
+\ProvidesFile{rutitlepage.dtx}[2022/02/21 v3.0 Radboud University Titlepage]
 % \iffalse
 \documentclass{ltxdoc}
 \usepackage{rutitlepage}
@@ -34,6 +34,7 @@
 %</driver>
 % \fi
 %
+% \changes{v3}{2022/02/21}{Add twentytwo layout}
 % \changes{v2.3}{2019/05/08}{Minor patches and typos}
 % \changes{v2.2}{2019/05/08}{Fixed packaging, copyright year}
 % \changes{v2.1}{2018/11/10}{Fix bug for default layout in manual, rename images}
@@ -49,13 +50,8 @@
 % \texttt{babel-dutch} is loaded; this package does not depend on it.
 %
 % \subsection{Contributors}
-% \texttt{rutitlepage} is maintained by Mart Lubbers but work has been done by
-% (in order of date of contribution):
-% \begin{itemize}
-% 	\item Camil Staps\footnote{\url{https://github.com/camilstaps}}
-% 	\item Daan Sprenkels\footnote{\url{https://github.com/dsprenkels}}
-% 	\item Chris Kamphuis\footnote{\url{https://github.com/chriskamphuis}}
-% \end{itemize}
+% \texttt{rutitlepage} is currently maintained by Mart Lubbers but work has also been done by
+% (in order of date of contribution): Camil Staps\footnote{\url{https://github.com/camilstaps}}, Daan Sprenkels\footnote{\url{https://github.com/dsprenkels}}, and Chris Kamphuis\footnote{\url{https://github.com/chriskamphuis}}.
 %
 % Previously, this titlepage flew around on the university for at least several
 % years in many forms. I'm not sure who created it first but credits to them!
@@ -73,55 +69,54 @@
 % 	\midrule
 % \texttt{authors}
 % 	& The name(s) of the primary author(s).
-% 	& \texttt{t}, \texttt{17} & \texttt{\textbackslash{}@author}\\
+% 	& \texttt{t}, \texttt{17}, \texttt{22} & \texttt{\textbackslash{}@author}\\
 % \texttt{authorstext}
 % 	& A text describing the author(s).
 % 	& \texttt{t} & \texttt{Author:}\\
 % \texttt{colour}
 % 	& Gives the logo colours. No value needed.
-% 	& \texttt{17}\\
+% 	& \texttt{17}, \texttt{22}\\
 % \texttt{course}
 % 	& The name of the course.
-% 	& \texttt{t}\\
+% 	& \texttt{t}, \texttt{22}\\
 % \texttt{date}
 % 	& The date.
-% 	& \texttt{t}, \texttt{17} & \texttt{\textbackslash{}@date}\\
+% 	& \texttt{t}, \texttt{17}, \texttt{22} & \texttt{\textbackslash{}@date}\\
 % \texttt{institution}
 % 	& The institution the document was written at.
 % 	& \texttt{t} & Radboud University Nijmegen\footnotemark\\
 % \texttt{layout}
 % 	& The layout: \texttt{traditional} or \texttt{seventeen}.
 % 		See the examples below.
-% 	& \texttt{t}, \texttt{17} & \texttt{seventeen}\\
+% 	& \texttt{t}, \texttt{17}, \texttt{22} & \texttt{seventeen}\\
 % \texttt{nextpagenr}
 % 	& The page number of the next page.
-% 	& \texttt{t}, \texttt{17} & \texttt{\textbackslash{}thepage+1}\\
+% 	& \texttt{t}, \texttt{17}, \texttt{22} & \texttt{\textbackslash{}thepage+1}\\
 % \texttt{others}
 % 	& Groups of other important people, besides the author(s).
 % 		The syntax is: \texttt{\{Header\}\{Names\}}.
 % 		For more than one group, use: \texttt{\{\{\dots\}\{\dots\},\{\dots\}\{\dots\}\}}.
-% 	& \texttt{t}, \texttt{17}\\
+% 	& \texttt{t}, \texttt{17}, \texttt{22}\\
 % \texttt{subtitle}
 % 	& The italic text under the title.
-% 	& \texttt{t}, \texttt{17}\\
+% 	& \texttt{t}, \texttt{17}, \texttt{22}\\
 % \texttt{title}
 % 	& The main document title.
-% 	& \texttt{t}, \texttt{17} & \texttt{\textbackslash{}@title}\\
+% 	& \texttt{t}, \texttt{17}, \texttt{22} & \texttt{\textbackslash{}@title}\\
 % 	\bottomrule
 % \end{tabular}
 % \addtocounter{footnote}{-1}
 % \footnotetext{Describes in which layouts the key is applicable.
-% 	\texttt{t} stands for `traditional'; \texttt{17} for `seventeen'.
+% 	\texttt{t} stands for `traditional'; \texttt{17} for `seventeen'; \texttt{22} for `twentytwo`.
 % 	See the \texttt{layout} option and the examples below.}
 % \addtocounter{footnote}{1}
-% \footnotetext{When \texttt{babel-dutch} is loaded,
-% 	`Radboud Universiteit Nijmegen'.}
 %
 % \section{Examples}
-% The following code generates the two titlepages below:
+% The following code generates the three titlepages below:
 %
 % \medskip
 % \noindent{\tt\textbackslash{}maketitleru[\\
+% \null\qquad layout=traditional,\\
 % \null\qquad authors=\{John Doe\},\\
 % \null\qquad date=\{Tomorrow\},\\
 % \null\qquad others=\{\{Supervisor:\}\{Jane Doe\},\{Second reader:\}\{Joanne Dune\}\},\\
@@ -136,7 +131,16 @@
 % \null\qquad date=\{Tomorrow\},\\
 % \null\qquad others=\{\{Supervisor:\}\{Jane Doe\},\{Second reader:\}\{Joanne Dune\}\},\\
 % \null\qquad title=\{The `seventeen' layout\},\\
-% \null\qquad subtitle=\{Based on the latest corporate identity guidelines\}]}\\
+% \null\qquad subtitle=\{Based on the latest corporate identity guidelines\}]}
+%
+% \medskip
+% \noindent{\tt\textbackslash{}maketitleru[\\
+% \null\qquad authors=\{John Doe\},\\
+% \null\qquad date=\{Tomorrow\},\\
+% \null\qquad others=\{\{Supervisor:\}\{Jane Doe\},\{Second reader:\}\{Joanne Dune\}\},\\
+% \null\qquad course=\{Master's Thesis\},\\
+% \null\qquad title=\{The `twentytwo' layout\},\\
+% \null\qquad subtitle=\{Slightly modified `seventeen` including course information\}]}
 %
 % \maketitleru[
 % 	authors={John Doe},
@@ -146,7 +150,6 @@
 % 	layout=traditional,
 % 	title={The `traditional' layout},
 % 	subtitle={Simple elegance}]
-%
 % \maketitleru[
 % 	layout=seventeen,
 % 	authors={John Doe},
@@ -154,16 +157,23 @@
 % 	others={{Supervisor:}{Jane Doe},{Second reader:}{Joanne Dune}},
 % 	title={The `seventeen' layout},
 % 	subtitle={Based on the latest corporate identity guidelines}]
+% \maketitleru[
+% 	layout=twentytwo,
+% 	authors={John Doe},
+% 	date={Tomorrow},
+% 	others={{Supervisor:}{Jane Doe},{Second reader:}{Joanne Dune}},
+% 	title={The `twentytwo' layout},
+% 	subtitle={Slightly modified `seventeen` including course information}]
 %\endinput
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{rutitlepage}[2019/05/08 Mart Lubbers]
+\ProvidesPackage{rutitlepage}[2022/02/21 Mart Lubbers]
 \RequirePackage{geometry,graphicx,ifpdf,keyval,iflang}
 \def\@rutitleauthors{\@author}
 \def\@rutitleauthorstext{Aut\IfLanguageName{dutch}{eu}{ho}r:}
 \def\@rutitledate{\@date}
 \def\@rutitleinst{Radboud Universit\IfLanguageName{dutch}{eit}{y} Nijmegen}
 \def\@rutitletitle{\@title}
-\def\@rutitlelayout{seventeen}
+\def\@rutitlelayout{twentytwo}
 \newif\if@rutitlecolour\@rutitlecolourfalse
 \define@key{maketitleru}{authors}{\def\@rutitleauthors{#1}}
 \define@key{maketitleru}{authorstext}{\def\@rutitleauthorstext{#1}}
@@ -184,6 +194,28 @@
 \newcommand*{\rutitlepage@otherslist}[1]{%
 	\expandafter\rutitlepage@others#1}
 \def\rutitlepage@otherslist@,#1{\rutitlepage@otherslist{{#1}}}
+\newcommand{\rutitle@layout@twentytwo}[0]{
+	\newgeometry{left=25mm,top=25mm,right=15mm,bottom=10mm,hmarginratio=1:1}
+	\begin{titlepage}%
+		\null\vfill%
+		\parindent0pt
+		\ifdefined\@rutitlecourse\textsc{\LARGE\@rutitlecourse}\\[1.5cm]\fi
+		{\Huge\bfseries\@rutitletitle}%
+		\ifdefined\@rutitlesubtitle{\\[2\baselineskip]\large\itshape\@rutitlesubtitle\/}\fi\\[4\baselineskip]
+		{\Large\scshape\@rutitleauthors}\\[\baselineskip]
+		{\large\@rutitledate}
+		\vfill
+
+		\ifdefined\@rutitleothers\rutitlepage@otherslist\@rutitleothers\fi
+		\vfill
+
+		\hfill
+		\ifpdf\includegraphics[width=80mm]{rutitlepage-logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.pdf}\\
+		\else\includegraphics[width=80mm]{rutitlepage-logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.eps}\\
+		\fi
+	\end{titlepage}
+	\restoregeometry%
+}
 \newcommand{\rutitle@layout@seventeen}[0]{
 	\newgeometry{left=25mm,top=25mm,right=15mm,bottom=10mm,hmarginratio=1:1}
 	\begin{titlepage}%

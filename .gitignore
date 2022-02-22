@@ -5,8 +5,11 @@
 *.dvi
 *.pdf
 *.sty
+*.fdb_latexmk
+*.fls
 *.tar.xz
 *.tar.gz
+*.synctex.gz
 tex
 source
 doc
