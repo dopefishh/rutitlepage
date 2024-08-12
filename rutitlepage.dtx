@@ -200,7 +200,7 @@
 		\null\vfill%
 		\parindent0pt
 		\ifdefined\@rutitlecourse\textsc{\LARGE\@rutitlecourse}\\[1.5cm]\fi
-		{\Huge\bfseries\@rutitletitle}%
+		\parbox{\textwidth}{\raggedright\Huge\bfseries\@rutitletitle}%
 		\ifdefined\@rutitlesubtitle{\\[2\baselineskip]\large\itshape\@rutitlesubtitle\/}\fi\\[4\baselineskip]
 		{\Large\scshape\@rutitleauthors}\\[\baselineskip]
 		{\large\@rutitledate}
@@ -221,7 +221,7 @@
 	\begin{titlepage}%
 		\null\vfill%
 		\parindent0pt
-		{\Huge\bfseries\@rutitletitle}%
+		\parbox{\textwidth}{\raggedright\Huge\bfseries\@rutitletitle}%
 		\ifdefined\@rutitlesubtitle{\\[2\baselineskip]\large\itshape\@rutitlesubtitle\/}\fi\\[4\baselineskip]
 		{\Large\scshape\@rutitleauthors}\\[\baselineskip]
 		{\large\@rutitledate}
