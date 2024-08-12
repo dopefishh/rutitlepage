@@ -38,6 +38,7 @@ Other contributors:
 - [camilstaps](https://github.com/camilstaps)
 - [dsprenkels](https://github.com/dsprenkels)
 - [chriskamphuis](https://github.com/chriskamphuis)
+- [niluxv](https://github.com/niluxv)
 
 ## Version
 
