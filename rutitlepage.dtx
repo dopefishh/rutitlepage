@@ -34,6 +34,7 @@
 %</driver>
 % \fi
 %
+% \changes{v3.2}{2024/11/25}{Add option for adding an extra logo}
 % \changes{v3.1}{2024/08/12}{Fix formatting for very long titles}
 % \changes{v3}{2022/02/21}{Add twentytwo layout}
 % \changes{v2.3}{2019/05/08}{Minor patches and typos}
@@ -90,7 +91,10 @@
 % 	& \texttt{t}, \texttt{17}, \texttt{22} & \texttt{\textbackslash{}@date}\\
 % \texttt{institution}
 % 	& The institution the document was written at.
-% 	& \texttt{t} & Radboud University Nijmegen\footnotemark\\
+% 	& \texttt{t} & Radboud University\footnotemark\\
+% \texttt{logo}
+% 	& Extra logo.\footnotemark
+% 	& \texttt{22}\\
 % \texttt{layout}
 % 	& The layout: \texttt{traditional}, \texttt{seventeen} or \texttt{twentytwo}.
 % 		See the examples below.
@@ -111,24 +115,28 @@
 % 	& \texttt{t}, \texttt{17}, \texttt{22} & \texttt{\textbackslash{}@title}\\
 % 	\bottomrule
 % \end{tabular}
-% \addtocounter{footnote}{-1}
+% \addtocounter{footnote}{-2}
 % \footnotetext{Describes in which layouts the key is applicable.
 % 	\texttt{t} stands for `traditional'; \texttt{17} for `seventeen'; \texttt{22} for `twentytwo`.
 % 	See the \texttt{layout} option and the examples below.}
 % \addtocounter{footnote}{1}
+% \footnotetext{Or Radboud Universiteit if the language is Dutch.}
+% \addtocounter{footnote}{1}
+% \footnotetext{The size of the Radboud logo is $75\times17$mm.}
 %
 % \section{Examples}
 % The following code generates the three titlepages below:
 %
 % \medskip
 % \noindent{\tt\textbackslash{}maketitleru[\\
-% \null\qquad layout=traditional,\\
 % \null\qquad authors=\{John Doe\},\\
-% \null\qquad date=\{Tomorrow\},\\
-% \null\qquad others=\{\{Supervisor:\}\{Jane Doe\},\{Second reader:\}\{Joanne Dune\}\},\\
 % \null\qquad course=\{Master's Thesis\},\\
-% \null\qquad title=\{The `traditional' layout\},\\
-% \null\qquad subtitle=\{Simple elegance\}]}
+% \null\qquad date=\{Tomorrow\},\\
+% \null\qquad logo={somecompany.jpg},\\
+% \null\qquad logo=\{\textbackslash{}includegraphics[height=17mm]\{somecompany.jpg\}\},\\
+% \null\qquad others=\{\{Supervisor:\}\{Jane Doe\},\{Second reader:\}\{Joanne Dune\}\},\\
+% \null\qquad title=\{The `twentytwo' layout\},\\
+% \null\qquad subtitle=\{Slightly modified `seventeen` including course information\}]}
 %
 % \medskip
 % \noindent{\tt\textbackslash{}maketitleru[\\
@@ -141,21 +149,23 @@
 %
 % \medskip
 % \noindent{\tt\textbackslash{}maketitleru[\\
+% \null\qquad layout=traditional,\\
 % \null\qquad authors=\{John Doe\},\\
 % \null\qquad date=\{Tomorrow\},\\
 % \null\qquad others=\{\{Supervisor:\}\{Jane Doe\},\{Second reader:\}\{Joanne Dune\}\},\\
 % \null\qquad course=\{Master's Thesis\},\\
-% \null\qquad title=\{The `twentytwo' layout\},\\
-% \null\qquad subtitle=\{Slightly modified `seventeen` including course information\}]}
+% \null\qquad title=\{The `traditional' layout\},\\
+% \null\qquad subtitle=\{Simple elegance\}]}
 %
 % \maketitleru[
+% 	layout=twentytwo,
 % 	authors={John Doe},
-% 	date={Tomorrow},
-% 	others={{Supervisor:}{Jane Doe},{Second reader:}{Joanne Dune}},
 % 	course={Master's Thesis},
-% 	layout=traditional,
-% 	title={The `traditional' layout},
-% 	subtitle={Simple elegance}]
+% 	date={Tomorrow},
+% 	logo={\includegraphics[height=17mm]{somecompany.jpg}},
+% 	others={{Supervisor:}{Jane Doe},{Second reader:}{Joanne Dune}},
+% 	title={The `twentytwo' layout},
+% 	subtitle={Slightly modified `seventeen` including course information}]
 % \maketitleru[
 % 	layout=seventeen,
 % 	authors={John Doe},
@@ -164,20 +174,21 @@
 % 	title={The `seventeen' layout},
 % 	subtitle={Based on the latest corporate identity guidelines}]
 % \maketitleru[
-% 	layout=twentytwo,
 % 	authors={John Doe},
 % 	date={Tomorrow},
 % 	others={{Supervisor:}{Jane Doe},{Second reader:}{Joanne Dune}},
-% 	title={The `twentytwo' layout},
-% 	subtitle={Slightly modified `seventeen` including course information}]
+% 	course={Master's Thesis},
+% 	layout=traditional,
+% 	title={The `traditional' layout},
+% 	subtitle={Simple elegance}]
 %\endinput
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{rutitlepage}[2022/02/21 Mart Lubbers]
+\ProvidesPackage{rutitlepage}[2024/11/25 Mart Lubbers]
 \RequirePackage{geometry,graphicx,ifpdf,keyval,iflang}
 \def\@rutitleauthors{\@author}
 \def\@rutitleauthorstext{Aut\IfLanguageName{dutch}{eu}{ho}r:}
 \def\@rutitledate{\@date}
-\def\@rutitleinst{Radboud Universit\IfLanguageName{dutch}{eit}{y} Nijmegen}
+\def\@rutitleinst{Radboud Universit\IfLanguageName{dutch}{eit}{y}}
 \def\@rutitletitle{\@title}
 \def\@rutitlelayout{twentytwo}
 \newif\if@rutitlecolour\@rutitlecolourfalse
@@ -188,6 +199,7 @@
 \define@key{maketitleru}{date}{\def\@rutitledate{#1}}
 \define@key{maketitleru}{institution}{\def\@rutitleinst{#1}}
 \define@key{maketitleru}{layout}{\def\@rutitlelayout{#1}}
+\define@key{maketitleru}{logo}{\def\@rutitlelogo{#1}}
 \define@key{maketitleru}{nextpagenr}{\def\@rutitlenextpagenr{#1}}
 \define@key{maketitleru}{others}{\def\@rutitleothers{#1}}
 \define@key{maketitleru}{subtitle}{\def\@rutitlesubtitle{#1}}
@@ -215,9 +227,10 @@
 		\ifdefined\@rutitleothers\rutitlepage@otherslist\@rutitleothers\fi
 		\vfill
 
+		\ifdefined\@rutitlelogo\@rutitlelogo\fi
 		\hfill
-		\ifpdf\includegraphics[width=80mm]{rutitlepage-logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.pdf}\\
-		\else\includegraphics[width=80mm]{rutitlepage-logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.eps}\\
+		\ifpdf\includegraphics{rutitlepage-logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.pdf}\\
+		\else\includegraphics{rutitlepage-logo-\IfLanguageName{dutch}{nl-}{}\if@rutitlecolour cmyk\else bw\fi.eps}\\
 		\fi
 	\end{titlepage}
 	\restoregeometry%
